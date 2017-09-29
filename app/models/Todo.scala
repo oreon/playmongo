@@ -16,7 +16,11 @@ import scala.concurrent.{ExecutionContext, Future}
   * Created by Riccardo Sirigu on 10/08/2017.
   */
 
-case class Todo(_id: Option[BSONObjectID], title: String, completed: Option[Boolean])
+trait BaseObject {
+  def  _id: Option[BSONObjectID]
+}
+
+case class Todo(_id: Option[BSONObjectID], title: String, completed: Option[Boolean]) extends  BaseObject
 
 object JsonFormats{
   import play.api.libs.json._
